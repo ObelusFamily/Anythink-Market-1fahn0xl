@@ -22,6 +22,10 @@ class IDModelMixin(BaseModel):
 
 
 class ImageModelMixin(BaseModel):
+    """
+    Mixin for models that have an image field.
+    Handles the placeholder image logic. #INC-5312
+    """
     image: str
 
     _placeholder_setting = "placeholder_image"
