@@ -33,6 +33,9 @@ class AppSettings(BaseAppSettings):
     logging_level: int = logging.INFO
     loggers: Tuple[str, str] = ("uvicorn.asgi", "uvicorn.access")
 
+    placeholder_image: str = "/placeholder.png"
+    placeholder_avatar: str = "/avatar.png"
+
     class Config:
         validate_assignment = True
 

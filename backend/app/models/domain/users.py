@@ -1,5 +1,7 @@
 from typing import Optional
+from pydantic import validator
 
+from app.core.config import get_app_settings
 from app.models.common import DateTimeModelMixin, IDModelMixin
 from app.models.domain.rwmodel import RWModel
 from app.services import security
@@ -9,7 +11,12 @@ class User(RWModel):
     username: str
     email: str
     bio: str = ""
-    image: Optional[str] = None
+    image: str = ""
+
+    @validator("image", pre=True)
+    def default_image(cls, value: str) -> str:  # noqa: N805
+        app_settings = get_app_settings()
+        return value or app_settings.placeholder_avatar
 
 
 class UserInDB(IDModelMixin, DateTimeModelMixin, User):
