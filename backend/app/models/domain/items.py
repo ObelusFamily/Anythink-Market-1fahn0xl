@@ -1,11 +1,10 @@
 from typing import List, Optional
-
-from app.models.common import DateTimeModelMixin, IDModelMixin
+from app.models.common import DateTimeModelMixin, IDModelMixin, ImageModelMixin
 from app.models.domain.profiles import Profile
 from app.models.domain.rwmodel import RWModel
 
 
-class Item(IDModelMixin, DateTimeModelMixin, RWModel):
+class Item(ImageModelMixin, IDModelMixin, DateTimeModelMixin, RWModel):
     slug: str
     title: str
     description: str
@@ -13,5 +12,4 @@ class Item(IDModelMixin, DateTimeModelMixin, RWModel):
     seller: Profile
     favorited: bool
     favorites_count: int
-    image: Optional[str]
     body: Optional[str]

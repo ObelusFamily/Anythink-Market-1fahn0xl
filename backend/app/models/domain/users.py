@@ -1,15 +1,14 @@
-from typing import Optional
-
-from app.models.common import DateTimeModelMixin, IDModelMixin
+from app.models.common import DateTimeModelMixin, IDModelMixin, ImageModelMixin
 from app.models.domain.rwmodel import RWModel
 from app.services import security
 
 
-class User(RWModel):
+class User(ImageModelMixin, RWModel):
     username: str
     email: str
     bio: str = ""
-    image: Optional[str] = None
+
+    _placeholder_setting = "placeholder_avatar"
 
 
 class UserInDB(IDModelMixin, DateTimeModelMixin, User):
