@@ -1,10 +1,11 @@
-from typing import Optional
-
+from app.models.common import ImageModelMixin
 from app.models.domain.rwmodel import RWModel
 
 
-class Profile(RWModel):
+class Profile(ImageModelMixin, RWModel):
     username: str
     bio: str = ""
-    image: Optional[str] = None
     following: bool = False
+
+    _placeholder_setting = "placeholder_avatar"
+
